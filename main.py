@@ -6,14 +6,14 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        hashmap = {}
         for i, num in enumerate(nums):
-            for j, num2 in enumerate(nums):
-                if num2 + num == target:
-                    print(i)
-                    print(j)
-                    return [i, j]
+            complement = target - num
+            if complement in hashmap:
+                return [i, hashmap[complement]]
+            hashmap[num] = i
 
 
 if __name__ == '__main__':
     s = Solution()
-    s.twoSum([2, 4], 6)
+    s.twoSum([3, 2, 4], 6)
