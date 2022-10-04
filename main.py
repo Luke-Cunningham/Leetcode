@@ -21,6 +21,7 @@ class ListNode(object):
 
 
 class Solution2(object):
+
     def addTwoNumbers(self, l1, l2):
         return_head = ListNode(0)
         curr = return_head
@@ -49,13 +50,37 @@ class Solution2(object):
         return dummy.next
 
 
-if __name__ == '__main__':
-    s = Solution()
-    s.twoSum([3, 2, 4], 6)
+#######################################################################################################################
 
-    s2 = Solution2()
-    list1 = [7, 4, 8]
-    list2 = [4, 9, 6]
-    llist1 = s2.lst2link(list1)
-    llist2 = s2.lst2link(list2)
-    s2.addTwoNumbers(llist1, llist2)
+class Solution20(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        stack = []
+        dict = {"]": "[", "}": "{", ")": "("}
+        for char in s:
+            if char in dict.values():
+                stack.append(char)
+            elif char in dict.keys():
+                if stack == [] or dict[char] != stack.pop():
+                    return False
+            else:
+                return False
+        return stack == []
+
+
+if __name__ == '__main__':
+    # s = Solution()
+    # s.twoSum([3, 2, 4], 6)
+    #
+    # s2 = Solution2()
+    # list1 = [7, 4, 8]
+    # list2 = [4, 9, 6]
+    # llist1 = s2.lst2link(list1)
+    # llist2 = s2.lst2link(list2)
+    # s2.addTwoNumbers(llist1, llist2)
+
+    s = Solution20()
+    print(s.isValid("()[]"))
