@@ -71,16 +71,36 @@ class Solution20(object):
         return stack == []
 
 
-if __name__ == '__main__':
-    # s = Solution()
-    # s.twoSum([3, 2, 4], 6)
-    #
-    # s2 = Solution2()
-    # list1 = [7, 4, 8]
-    # list2 = [4, 9, 6]
-    # llist1 = s2.lst2link(list1)
-    # llist2 = s2.lst2link(list2)
-    # s2.addTwoNumbers(llist1, llist2)
+class Solution13(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        roman_nums = {
+            'I': 1,
+            'V': 5,
+            'X': 10,
+            'L': 50,
+            'C': 100,
+            'D': 500,
+            'M': 1000
 
-    s = Solution20()
-    print(s.isValid("()[]"))
+        }
+        s_length = len(s)
+
+        if s_length == 1:
+            return roman_nums.get(s[0])
+        sum = 0
+        for i in range(s_length - 1):
+            if roman_nums.get(s[i]) < roman_nums.get(s[i + 1]):
+                sum -= roman_nums.get(s[i])
+            else:
+                sum += roman_nums.get(s[i])
+        sum += roman_nums.get(s[-1])
+        return sum
+
+
+if __name__ == '__main__':
+    s = Solution13()
+    print(s.romanToInt("MCMXCIV"))
