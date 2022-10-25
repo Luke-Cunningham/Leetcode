@@ -124,4 +124,4 @@ class Solution3(object):
 
 if __name__ == '__main__':
     s = Solution3()
-    print(s.lengthOfLongestSubstring("dvdf"))
+    print(s.lengthOfLongestSubstring("abbbbdvdf"))
