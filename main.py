@@ -101,6 +101,27 @@ class Solution13(object):
         return sum
 
 
+#######################################################################################################################
+
+class Solution3(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        start = max_length = 0
+        used = {}
+
+        for i, char in enumerate(s):
+            if char in used and start <= used[char]:
+                start = used[char] + 1
+            else:
+                max_length = max(max_length, i - start + 1)
+            used[char] = i
+
+        return max_length
+
+
 if __name__ == '__main__':
-    s = Solution13()
-    print(s.romanToInt("MCMXCIV"))
+    s = Solution3()
+    print(s.lengthOfLongestSubstring("dvdf"))
